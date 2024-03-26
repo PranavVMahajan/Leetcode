@@ -20,7 +20,7 @@ class Solution {
             }
         }
         for(int i = 0; i < n; i++) {
-            if(nums[i] > 0) {
+            if(nums[i] > 0) { // for repeated number came we check here
                 return i+1;
             }
         }
