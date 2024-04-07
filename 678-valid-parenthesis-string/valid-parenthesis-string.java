@@ -1,28 +1,38 @@
 class Solution {
     public boolean checkValidString(String s) {
-        int low =0;
-        int high = 0;
+        Stack<Integer> sb = new Stack();
+        Stack<Integer> ast = new Stack();
         for(int i = 0;i<s.length();i++) {
-            if(s.charAt(i) == '(') {
-                low++;
-                high++;
+            char ch = s.charAt(i);
+            if(ch == '(') {
+                sb.push(i);
             }
-            else if (s.charAt(i)==')') {
-                if(low>0) {
-                    low--;
-                }
-                high--;
+            else if (ch == '*' ) {
+                ast.push(i);
             }
             else {
-                if (low > 0) {
-								low--;
-						}
-						high++;
-				}
-				if (high < 0) {
-						return false;
-				}
+                //closing bracket 
+                if(!sb.isEmpty()) {
+                    sb.pop();
+                }
+                else if (!ast.isEmpty()) {
+                    ast.pop(); // * is treated as (
+                }
+                else {
+                    return false;
+                }
+            }
         }
-		return low == 0;
+        while(!sb.isEmpty()) {
+            if(ast.isEmpty()) {
+                return false;
+            }
+            int openIdx = sb.pop();
+            int closeIdx = ast.pop();
+            if(openIdx>closeIdx) {
+                return false;
+            }
+        }
+        return sb.isEmpty();
     }
 }
