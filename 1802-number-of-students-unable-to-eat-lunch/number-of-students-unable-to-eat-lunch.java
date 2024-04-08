@@ -1,29 +1,20 @@
 class Solution {
     public int countStudents(int[] students, int[] sandwiches) {
-        int circleS = 0;
-        int squareS = 0;
-        for(int choice : students) {
-            if(choice == 0) {
-                circleS++;
-            }
-            else {
-                squareS++;
-            }
+        int n = students.length;
+        int arr[] = new int[2];
+        // arr[0] = count of student liking 0(circle) sandwitch
+        // arr[1] = count of student liking 1(square) sandwitch
+        for (int stud : students) {
+            arr[stud]++;
         }
-        for(int sandwich : sandwiches) {
-            if(sandwich ==0 && circleS== 0) {
-                return squareS;
+        for(int i=0;i<n;i++) {
+            int sand =sandwiches[i];
+            if(arr[sand]==0) {
+                return n-i;
             }
-            if(sandwich ==1 && squareS== 0) {
-                return circleS;
-            }
-            if(sandwich == 0) {
-                circleS--;
-            }
-            else {
-                squareS--;
-            }
+            arr[sand]--;
         }
         return 0;
+
     }
 }
