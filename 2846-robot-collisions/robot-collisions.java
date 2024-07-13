@@ -9,6 +9,9 @@ class Solution {
         }
         Arrays.sort(indexes, new Comparator<Integer>() {
             public int compare(Integer a, Integer b) {
+                //increasing order of positions sort
+                //negative or 0 , no swapping
+                //positive , swap
                 return positions[a] - positions[b];
             }
         });
