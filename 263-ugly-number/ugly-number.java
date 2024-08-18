@@ -1,19 +1,24 @@
 class Solution {
     public boolean isUgly(int n) {
         if(n == 0) return false;
-        if(n<=3 && n > 0) {
-            return true;
+        while(true) {
+            if(n%2 != 0) {
+                break;
+            }
+            n /=2;
         }
-
-        if(n %2 == 0) {
-            return isUgly(n/2);
+        while(true) {
+            if(n%3 != 0) {
+                break;
+            }
+            n /=3;
         }
-        if(n %3 == 0) {
-            return isUgly(n/3);
+        while(true) {
+            if(n%5 != 0) {
+                break;
+            }
+            n /=5;
         }
-        if(n %5 == 0) {
-            return isUgly(n/5);
-        }
-        return false;
+        return (n == 1);
      }
 }
