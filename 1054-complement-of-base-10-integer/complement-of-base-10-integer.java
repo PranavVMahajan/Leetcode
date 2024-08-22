@@ -1,8 +1,16 @@
 class Solution {
     public int bitwiseComplement(int n) {
-       if( n == 1) return 0;
-       int len = (int)(Math.log(n) / Math.log(2)) + 1;
-       int mask = (1<<len) -1;
-       return mask^n;
+       if(n == 0) return 1;
+       int i = 0;
+        int result = 0;
+
+        while(n != 0) {
+            if((n & 1) == 0) {
+                result |= (1 << i);
+            }
+            n >>= 1;
+            i++;
+        }
+        return result;
     }
 }
