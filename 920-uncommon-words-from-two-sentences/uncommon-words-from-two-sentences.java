@@ -15,10 +15,7 @@ class Solution {
             }
         }
         String res[] = new String[arr.size()];
-
-        for(int i=0;i<res.length;i++) {
-            res[i]=arr.get(i);
-        }
+        arr.toArray(res);
         return res;
     }
 }
