@@ -3,7 +3,7 @@ class Solution {
     int n; // cols
     int[] directions = {-1, 0, 1};
 
-    private int DFS(int row, int col, int[][] grid, int[][] t) {
+    public int DFS(int row, int col, int[][] grid, int[][] t) {
         if (t[row][col] != -1) {
             return t[row][col];
         }
