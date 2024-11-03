@@ -3,11 +3,8 @@ class Solution {
         if(s.length() != goal.length()) {
             return false;
         }
-        for(int i=1;i<=s.length();i++) {
-            s = s.substring(1)+s.charAt(0);
-            if(s.equals(goal)) {
-                return true;
-            }
+        if((s+s).contains(goal)) {
+            return true;
         }
         return false;
     }
