@@ -1,7 +1,6 @@
 class Solution {
     public int[] closestPrimes(int left, int right) {
-        // O(R log(logR) + R-L)
-        
+    
         // Sieve algorithm to find prime numbers between [1,right]
         boolean prime[] = new boolean[right + 1];
         Arrays.fill(prime,true);
