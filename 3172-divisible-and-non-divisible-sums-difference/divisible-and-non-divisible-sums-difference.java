@@ -6,12 +6,11 @@ class Solution {
             if(i%m == 0){
                 divSum += i;
             }
-        }
-        for(int i=1;i<=n;i++){
-            if(i%m != 0){
+            else {
                 nondivSum += i;
             }
         }
+        
         return (nondivSum - divSum);
     }
 }
