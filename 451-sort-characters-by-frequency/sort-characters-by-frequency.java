@@ -4,13 +4,16 @@ class Solution {
         for(char c: s.toCharArray()){
             map.put(c,map.getOrDefault(c,0)+1);
         }
-        List<Character> list = new ArrayList<>(map.keySet());
+        PriorityQueue<Map.Entry<Character, Integer>> maxHeap =
+            new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());
 
-        list.sort((a, b) -> map.get(b) - map.get(a));
+        maxHeap.addAll(map.entrySet());
 
         StringBuilder sb = new StringBuilder();
-        for (char c : list) {
-            int freq = map.get(c);
+        while (!maxHeap.isEmpty()) {
+            Map.Entry<Character, Integer> entry = maxHeap.poll();
+            char c = entry.getKey();
+            int freq = entry.getValue();
             for (int i = 0; i < freq; i++) {
                 sb.append(c);
             }
