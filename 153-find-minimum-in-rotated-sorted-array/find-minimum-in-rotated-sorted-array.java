@@ -1,22 +1,18 @@
 class Solution {
     public int findMin(int[] nums) {
-       int n = nums.length;
-        int l = 0, r = n - 1;
-
-        while (l < r) {
-            int mid = l + (r - l) / 2;
-            // Compare mid element with the rightmost element to determine the sorted part
-            if (nums[mid] > nums[r]) {
-                // The minimum is in the right unsorted part
-                l = mid + 1;
-            } else {
-                // The minimum is in the left part including mid
-                r = mid;
+        int st =0,end=nums.length-1;
+        int min = Integer.MAX_VALUE;
+        while(st<=end){
+            int mid = (st+end)/2;
+            if(nums[st]<=nums[mid]){
+                min=Math.min(nums[st],min);
+                st=mid+1;
+            }
+            else{
+                min=Math.min(nums[mid],min);
+                end = mid-1;
             }
         }
-
-        // After the loop, l == r and it points to the minimum element
-        return nums[l];
-
+        return min;
     }
 }
