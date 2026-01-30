@@ -1,42 +1,42 @@
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
-       int startRow=0;
-        int startCol=0;
-        int endRow=matrix.length-1;
-        int endCol=matrix[0].length-1;
-         ArrayList<Integer> arr=new ArrayList<Integer>();
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int stRow = 0;
+        int stCol = 0;
+        int endRow = m-1;
+        int endCol = n-1;
+        ArrayList<Integer> arr=new ArrayList<Integer>();
 
-        while(startRow<=endRow && startCol<=endCol) {
-            //top
-            for(int j=startCol;j<=endCol;j++) {
-                arr.add(matrix[startRow][j]);
+        while(stRow<=endRow && stCol<=endCol){
+            
+            //TOP to left
+            for(int j = stCol;j<=endCol;j++){
+                arr.add(matrix[stRow][j]);
             }
 
-            //Right
-            for(int i=startRow+1;i<=endRow;i++) {
-                arr.add(matrix[i][endCol]);
+            //RIGHT to down 
+            for(int j=stRow+1;j<=endRow;j++){
+                arr.add(matrix[j][endCol]);
             }
 
-            //Bottem
-            for(int j=endCol-1;j>=startCol;j--) {
-                if(startRow==endRow) {
-                    break;
-                }
+            //LEFT to right
+            for(int j=endCol-1;j>=stCol;j--){
+                if(stRow == endRow) break;
                 arr.add(matrix[endRow][j]);
             }
 
-            //Left
-            for(int i=endRow-1;i>=startRow+1;i--) {
-                if(startCol==endCol) {
-                    break;
-                }
-                arr.add(matrix[i][startCol]);
+            //BOTTOM to top
+            for(int j=endRow-1;j>=stRow+1;j--){
+                if(stCol==endCol) break;
+                arr.add(matrix[j][stCol]);
             }
-            startCol++;
-            startRow++;
-            endCol--;
+            stRow++;
+            stCol++;
             endRow--;
+            endCol--;
         }
-        return arr; 
+        return arr;
+        
     }
 }
